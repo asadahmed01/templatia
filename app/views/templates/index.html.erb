@@ -1,0 +1,16 @@
+<div class="container mt-3">
+  <h1>Templates</h1>
+  <div class="row">
+    <% @templates.each do |template| %>
+      <%= link_to template_path(template), class: "col-md-4 mb-3", style: "text-decoration: none !important;" do %>
+        <div class="card shadow">
+          <img src="<%= url_for(template.thumbnails.first) %>" class="card-img-top" alt="Thumbnail">
+          <div class="card-body">
+            <h5 class="card-title"><%= template.name %></h5>
+            <p class="card-text"><%= template.description %></p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

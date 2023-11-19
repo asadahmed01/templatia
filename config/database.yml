@@ -1,0 +1,21 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: <%= ENV['DATABASE_NAME'] || "blogpg" %>
+  username: <%= ENV['DATABASE_USER'] || "blogpg" %>
+  password: <%= ENV['DATABASE_PASSWORD'] || "blogpg" %>
+  port: <%= ENV['DATABASE_PORT'] || "5432" %>
+  host: <%= ENV['DATABASE_HOST'] || "127.0.0.1" %>
+development:
+  <<: *default
+  port: 5434
+test:
+  <<: *default
+  database: blogpg_test
+  port: 5434
+production:
+  <<: *default
+  database: blogpg_production
+  username: blogpg
+  password: <%= ENV['BLOGPG_DATABASE_PASSWORD'] %>

@@ -1,0 +1,64 @@
+<div class="container mt-3">
+  <div class="row mb-3">
+    <!-- Thumbnails Column (Left Side) -->
+    <!-- Thumbnail links to trigger carousel -->
+    <div class="col-md-1 align-self-center" data-controller="thumbnails">
+      <% @template.thumbnails.each_with_index do |thumbnail, index| %>
+        <%= link_to "#", class: "d-block mb-2", data: { action: "thumbnails#select", bs_target: "#carouselExampleIndicators", bs_slide_to: index } do %>
+          <%= image_tag thumbnail, class: "img-thumbnail border-none rounded-4", data: { thumbnails_target: "image" }, style: "width:80px; height:80px;" %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <!-- Main Content Area (Right Side) -->
+    <div class="col-md-8">
+      <!-- Template Details -->
+      <div class="mt-4">
+        <h1><%= @template.name %></h1>
+        <p><%= @template.description %></p>
+      </div>
+
+      <!-- Carousel for Thumbnails -->
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="false">
+        <div class="carousel-indicators">
+          <% @template.thumbnails.each_with_index do |_, index| %>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="<%= 'active' if index.zero? %>" <%= 'aria-current="true"' if index.zero? %>></button>
+          <% end %>
+        </div>
+        <div class="carousel-inner" style="height:600px;">
+          <% @template.thumbnails.each_with_index do |thumbnail, index| %>
+            <div class="carousel-item <%= 'active' if index.zero? %>">
+            <%= image_tag thumbnail, class: "d-block w-100", style: "height:600px; object-fit: fill;" %>
+            </div>
+          <% end %>
+        </div>
+        <% if @template.thumbnails.count > 1 %>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- Sidebar Area -->
+    <div class="col-md-3 ps-5 align-self-center">
+      <!-- Pricing and Add to Basket Button -->
+      <div>
+        <p class="h3"><%= number_to_currency(@template.price, unit: "CA$") %></p>
+        <%# <%= button_to 'Add to basket', { action: 'add_to_basket', id: @template.id }, { method: :post, class: 'btn btn-dark btn-lg btn-block' } %>
+        <button type="button" class="btn btn-dark w-100 rounded-pill py-2">Add to cart</button>
+      </div>
+      <!-- Item Details, if you have more information to show -->
+      <div class="mt-4">
+        <h3 class="h5">Item details</h3>
+        <p>Digital download (PDF)</p>
+        <p>More details...</p>
+      </div>
+    </div>
+  </div>
+</div>
