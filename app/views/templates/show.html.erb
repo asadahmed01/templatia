@@ -11,7 +11,7 @@
     </div>
 
     <!-- Main Content Area (Right Side) -->
-    <div class="col-md-8">
+    <div class="col-md-7">
       <!-- Template Details -->
       <div class="mt-4">
         <h1><%= @template.name %></h1>
@@ -19,7 +19,7 @@
       </div>
 
       <!-- Carousel for Thumbnails -->
-      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="false">
+      <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-interval="false">
         <div class="carousel-indicators">
           <% @template.thumbnails.each_with_index do |_, index| %>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="<%= 'active' if index.zero? %>" <%= 'aria-current="true"' if index.zero? %>></button>
@@ -46,7 +46,7 @@
     </div>
 
     <!-- Sidebar Area -->
-    <div class="col-md-3 ps-5 align-self-center">
+    <div class="col-md-4 ps-5 align-self-center">
       <!-- Pricing and Add to Basket Button -->
       <div>
         <p class="h3"><%= number_to_currency(@template.price, unit: "CA$") %></p>
@@ -54,10 +54,8 @@
         <button type="button" class="btn btn-dark w-100 rounded-pill py-2">Add to cart</button>
       </div>
       <!-- Item Details, if you have more information to show -->
-      <div class="mt-4">
-        <h3 class="h5">Item details</h3>
-        <p>Digital download (PDF)</p>
-        <p>More details...</p>
+      <div class="mt-4" style="max-height:50px;">
+        <%= render partial: '/templates/template_accordions' %>
       </div>
     </div>
   </div>
