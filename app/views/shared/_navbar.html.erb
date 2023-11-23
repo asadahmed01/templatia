@@ -1,0 +1,14 @@
+<nav class="navbar navbar-light bg-light border-bottom">
+  <div class="container">
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag("logo.png", alt: "logo") %>
+    <% end %>
+    <!-- Shopping bag icon on the far right -->
+    <%= link_to cart_templates_path, class: "position-relative text-decoration-none text-dark fs-5" do %>
+        <i class="bi bi-bag"></i>
+        <% if !session[:cart].empty? %>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-danger fst-normal"><%= session[:cart].size%></span>
+        <% end %>
+    <% end %>
+  </div>
+</nav>

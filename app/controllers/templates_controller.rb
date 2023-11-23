@@ -1,4 +1,7 @@
 class TemplatesController < ApplicationController
+    before_action :load_cart, only: [:add_to_cart, :cart]
+    before_action :set_template, only: [:add_to_cart]
+
     def index
       @templates = Template.all
     end
@@ -38,9 +41,34 @@ class TemplatesController < ApplicationController
       @template.destroy
       redirect_to templates_path
     end
-  
+
+    def add_to_cart
+      respond_to do |format|
+        if !@cart.include?(params[:id].to_i)
+          @cart << params[:id].to_i
+          format.html { redirect_to template_path(@template), notice: 'Item added to cart successfully.' }
+        else
+          format.html { redirect_to template_path(@template), alert: 'Item already in cart!' }
+        end
+      end
+    end
+
+    def cart
+        @cart_items = Template.find(load_cart_items)
+    end
+
+    
     private
+
+    def load_cart_items
+      session[:cart] ||= []
+      @cart = session[:cart]
+    end
   
+    def set_template
+      @template = Template.find(params[:id])
+    end
+
     def template_params
       params.require(:template).permit(:name, :description, :price, :template_file, thumbnails: [])
     end

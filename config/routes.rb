@@ -6,6 +6,12 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   root "templates#index"
-  resources :templates
-
+  resources :templates do
+    member do
+      post 'add_to_cart', to: 'templates#add_to_cart'
+    end
+    collection do
+      get 'cart', to: 'templates#cart'
+    end
+  end 
 end

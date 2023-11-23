@@ -2,16 +2,10 @@
   <div class="row mb-3">
     <!-- Thumbnails Column (Left Side) -->
     <!-- Thumbnail links to trigger carousel -->
-    <div class="col-md-1 align-self-center" data-controller="thumbnails">
-      <% @template.thumbnails.each_with_index do |thumbnail, index| %>
-        <%= link_to "#", class: "d-block mb-2", data: { action: "thumbnails#select", bs_target: "#carouselExampleIndicators", bs_slide_to: index } do %>
-          <%= image_tag thumbnail, class: "img-thumbnail border-none rounded-4", data: { thumbnails_target: "image" }, style: "width:80px; height:80px;" %>
-        <% end %>
-      <% end %>
-    </div>
+    
 
     <!-- Main Content Area (Right Side) -->
-    <div class="col-md-7">
+    <div class="col-md-8">
       <!-- Template Details -->
       <div class="mt-4">
         <h1><%= @template.name %></h1>
@@ -19,7 +13,15 @@
       </div>
 
       <!-- Carousel for Thumbnails -->
-      <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-interval="false">
+      <div id="carouselExampleIndicators" class="carousel slide carousel-fade d-flex" data-bs-interval="false">
+
+        <div class="col-md-1 align-self-center" data-controller="thumbnails">
+          <% @template.thumbnails.each_with_index do |thumbnail, index| %>
+            <%= link_to "#", class: "d-block mb-2", data: { action: "thumbnails#select", bs_target: "#carouselExampleIndicators", bs_slide_to: index } do %>
+              <%= image_tag thumbnail, class: "img-thumbnail border-none rounded-4", data: { thumbnails_target: "image" }, style: "width:80px; height:80px;" %>
+            <% end %>
+          <% end %>
+        </div>
         <div class="carousel-indicators">
           <% @template.thumbnails.each_with_index do |_, index| %>
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="<%= 'active' if index.zero? %>" <%= 'aria-current="true"' if index.zero? %>></button>
@@ -50,13 +52,13 @@
       <!-- Pricing and Add to Basket Button -->
       <div>
         <p class="h3"><%= number_to_currency(@template.price, unit: "CA$") %></p>
-        <%# <%= button_to 'Add to basket', { action: 'add_to_basket', id: @template.id }, { method: :post, class: 'btn btn-dark btn-lg btn-block' } %>
-        <button type="button" class="btn btn-dark w-100 rounded-pill py-2">Add to cart</button>
+        <%= link_to 'Add to Cart', add_to_cart_template_path(@template), class: "btn btn-dark w-100 rounded-pill py-2", data: {turbo_method: :post} %>
       </div>
       <!-- Item Details, if you have more information to show -->
       <div class="mt-4" style="max-height:50px;">
         <%= render partial: '/templates/template_accordions' %>
       </div>
+      <%= render partial: "/shared/flash_messages"%>
     </div>
   </div>
 </div>
