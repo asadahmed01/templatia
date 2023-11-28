@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :templates do
     member do
       post 'add_to_cart', to: 'templates#add_to_cart'
+      delete 'remove_from_cart', to: 'templates#remove_from_cart'
     end
     collection do
       get 'cart', to: 'templates#cart'

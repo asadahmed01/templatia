@@ -1,5 +1,5 @@
 class TemplatesController < ApplicationController
-    before_action :load_cart, only: [:add_to_cart, :cart]
+    before_action :load_cart, only: [:add_to_cart, :remove_from_cart, :cart]
     before_action :set_template, only: [:add_to_cart]
 
     def index
@@ -49,6 +49,19 @@ class TemplatesController < ApplicationController
           format.html { redirect_to template_path(@template), notice: 'Item added to cart successfully.' }
         else
           format.html { redirect_to template_path(@template), alert: 'Item already in cart!' }
+        end
+      end
+    end
+
+    def remove_from_cart
+      template_id = params[:id].to_i
+
+      respond_to do |format|
+        if @cart.include?(template_id)
+          @cart.delete(template_id)
+          format.html { redirect_to cart_templates_path(@template), notice: 'Item removed!' }
+        else
+          format.html { redirect_to cart_templates_path(@template), notice: 'Error!' }
         end
       end
     end
