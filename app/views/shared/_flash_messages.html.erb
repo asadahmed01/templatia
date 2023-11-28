@@ -1,6 +1,8 @@
-<% flash.each do |type, msg| %>
-<%= type%>
-  <div class="alert <%= type == 'notice' ? 'alert-success' : type == 'alert' ? 'alert-danger' : '' %>" role="alert">
-    <%= msg %>
+  <div class="position-absolute bottom-0 end-0 w-25 m-2">
+    <% flash.each do |type, msg| %>
+      <div class="alert <%= type == 'notice' ? 'alert-success' : type == 'alert' ? 'alert-danger' : '' %>" role="alert">
+        <%= msg %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+
