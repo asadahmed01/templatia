@@ -6,8 +6,10 @@
     <!-- Shopping bag icon on the far right -->
     <%= link_to cart_templates_path, class: "position-relative text-decoration-none text-dark fs-5" do %>
         <i class="bi bi-bag"></i>
-        <% if !session[:cart].empty? %>
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-danger fst-normal"><%= session[:cart].size%></span>
+        <% if session[:cart].present? %>
+          <% if !session[:cart].empty? %>
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill text-danger fst-normal"><%= session[:cart].size%></span>
+          <% end %>
         <% end %>
     <% end %>
   </div>

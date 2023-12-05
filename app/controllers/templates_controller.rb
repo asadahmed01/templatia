@@ -46,7 +46,7 @@ class TemplatesController < ApplicationController
       respond_to do |format|
         if !@cart.include?(params[:id].to_i)
           @cart << params[:id].to_i
-          format.html { redirect_to template_path(@template), notice: 'Item added to cart successfully.' }
+          format.html { redirect_to cart_templates_path, notice: 'Item added to cart successfully.' }
         else
           format.html { redirect_to template_path(@template), alert: 'Item already in cart!' }
         end
@@ -59,9 +59,9 @@ class TemplatesController < ApplicationController
       respond_to do |format|
         if @cart.include?(template_id)
           @cart.delete(template_id)
-          format.html { redirect_to cart_templates_path(@template), notice: 'Item removed!' }
+          format.html { redirect_to cart_templates_path, notice: 'Item removed!' }
         else
-          format.html { redirect_to cart_templates_path(@template), notice: 'Error!' }
+          format.html { redirect_to cart_templates_path, notice: 'Error!' }
         end
       end
     end

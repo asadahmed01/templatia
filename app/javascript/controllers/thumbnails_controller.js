@@ -11,10 +11,13 @@ export default class extends Controller {
     // Remove the active class from all thumbnails
     this.imageTargets.forEach((element) => {
       element.classList.remove('border', 'border-dark')
+      element.classList.add('border-white')
     });
     // Add the active class to the clicked thumbnail
     const clickedImage = event.currentTarget.querySelector('img');
     if (clickedImage) {
+      console.log(clickedImage)
+      clickedImage.classList.remove('border-white')
       clickedImage.classList.add('border', 'border-dark');
     }
   }

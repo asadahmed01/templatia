@@ -7,13 +7,14 @@
   <div class="py-5 mt-3">
     <div class="row d-flex justify-content-center align-items-center">
       <div class="col-10">
-
-        <div class="d-flex justify-content-between align-items-center mb-4">
-          <h3 class="fw-normal text-black text-muted my-5">Items in your cart</h3>
-        </div>
+        <% if @cart_items.any?%>
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="fw-normal text-black text-muted my-5"> <%= pluralize(@cart_items.size,  "item") %> in your cart</h3>
+          </div>
+        <% end %>
 
         <% if @cart_items.empty? %>
-          <p class="d-flex justify-content-center align-items-center">Your cart is empty.</p>
+          <p class="d-flex justify-content-center align-items-center mt-4">Your cart is empty.</p>
         <% else %>
           <% @cart_items.each do |item| %>
             <div class="card rounded-3 mb-5 shadow">
@@ -45,8 +46,8 @@
         <% end %>
 
         <% if @cart_items.any? %>
-          <div class="d-grid gap-2 col-6 mx-auto my-5">
-            <%= link_to 'Proceed to checkout', '#', class: "btn btn-dark rounded-pill py-3", data: {turbo_method: :post} %>
+          <div class="d-grid gap-2 col-md-6 col-12 mx-auto my-5">
+            <%= link_to 'Proceed to checkout', checkout_index_path, class: "btn btn-dark rounded-pill py-3" %>
           </div>
         <% end %>
       </div>

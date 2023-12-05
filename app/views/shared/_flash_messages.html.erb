@@ -1,8 +1,8 @@
-  <div class="position-absolute bottom-0 end-0 w-25 m-2">
+  <div class="position-absolute top-0 end-0 me-2 mb-3" data-controller="alert" data-alert-target="alert">
     <% flash.each do |type, msg| %>
       <div class="d-flex justify-content-between alert alert-dismissibl <%= type == 'notice' ? 'alert-success' : type == 'alert' ? 'alert-danger' : '' %>" role="alert">
         <strong><%= msg %>!</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <button type="button" class="btn-close px-2" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     <% end %>
   </div>
