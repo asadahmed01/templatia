@@ -1,0 +1,9 @@
+current directory: /workspaces/templatia/vendor/bundle/ruby/3.2.0/gems/racc-1.7.3/ext/racc/cparse
+/usr/local/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /workspaces/templatia/vendor/bundle/ruby/3.2.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20231207-567-t2a6cz sitelibdir\=./.gem.20231207-567-t2a6cz clean
+current directory: /workspaces/templatia/vendor/bundle/ruby/3.2.0/gems/racc-1.7.3/ext/racc/cparse
+make DESTDIR\= sitearchdir\=./.gem.20231207-567-t2a6cz sitelibdir\=./.gem.20231207-567-t2a6cz
+make failedNo such file or directory - make

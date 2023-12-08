@@ -1,0 +1,9 @@
+current directory: /workspaces/templatia/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+/usr/local/bin/ruby extconf.rb
+creating Makefile
+
+current directory: /workspaces/templatia/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20231207-567-8ek8gv sitelibdir\=./.gem.20231207-567-8ek8gv clean
+current directory: /workspaces/templatia/vendor/bundle/ruby/3.2.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20231207-567-8ek8gv sitelibdir\=./.gem.20231207-567-8ek8gv
+make failedNo such file or directory - make

@@ -39,6 +39,8 @@ gem 'bootstrap', '~> 5.3.2'
 
 gem 'sassc-rails'
 
+gem 'stripe'
+
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
@@ -77,3 +79,6 @@ gem "dockerfile-rails", ">= 1.5", :group => :development
 gem "sentry-ruby", "~> 5.13"
 
 gem "sentry-rails", "~> 5.13"
+
+gem "dotenv-rails"
+gem 'requestjs-rails'

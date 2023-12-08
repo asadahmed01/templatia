@@ -1,0 +1,21 @@
+<%# <div class="container mt-5 align-items-end">
+  <h1 class="text-center mb-5">Checkout</h1>
+  <p class="small text-center text-muted my-5">Please provide your email below. We will send you a copy of the digital files.</p>
+  <%= form_with(url: checkout_index_path, method: :post, class: 'mt-5') do |form| %>
+    <%# <div class="row g-3 d-flex justify-content-center">
+      <div class="col-md-4 mb-3">
+        <%= form.label :email, class: 'visually-hidden' %>
+        <%# <%= form.email_field :email, class: 'form-control px-4', placeholder: "example@example.com", required: true %>
+      <%# </div>
+      <div class="col-md-2">
+        <%= form.submit "Send", class: 'btn btn-dark mb-3 w-100' %>
+      <%# </div> %>
+    <%# </div> %>
+  <%# <% end %>
+<%# </div> %>
+ <%# %>
+
+
+ <div data-controller="stripe-checkout" data-stripe-checkout-publishable-key-value="<%= ENV['STRIPE_PUBLISHABLE_KEY']%>"
+    data-stripe-checkout-url-value="<%= checkouts_path %>">
+ </div>
