@@ -17,11 +17,14 @@ class CheckoutsController < ApplicationController
                     images: [url_for(@template.thumbnails.first)]
                 },
               },
-              quantity: 1,
+              quantity: 1
             }],
             mode: 'payment',
+            metadata: {
+              product_id: @template.id,
+            },
             return_url: templates_url,
-          )
+        )
       render json: { clientSecret: stripe_session.client_secret}
     end
   

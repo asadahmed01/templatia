@@ -70,6 +70,13 @@ class TemplatesController < ApplicationController
         @cart_items = Template.find(load_cart_items)
     end
 
+    class TemplatesController < ApplicationController
+      def download
+        @template = Template.find(params[:id])
+        send_file @template.attachment.path, filename: @template.attachment.filename
+      end
+    end
+
     
     private
 

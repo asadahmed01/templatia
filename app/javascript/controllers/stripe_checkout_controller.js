@@ -9,9 +9,7 @@ export default class extends Controller {
     const stripe = Stripe(this.publishableKeyValue)
     
     const response = await post(this.urlValue)
-    const {clientSecret} = await response.response.json()
-    console.log(clientSecret)
-  
+    const {clientSecret} = await response.response.json()  
     const checkout = await stripe.initEmbeddedCheckout({
       clientSecret,
     })

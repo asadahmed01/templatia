@@ -12,10 +12,15 @@ Rails.application.routes.draw do
       post 'add_to_cart', to: 'templates#add_to_cart'
       delete 'remove_from_cart', to: 'templates#remove_from_cart'
     end
+    member do
+      get 'download'
+    end
     collection do
       get 'cart', to: 'templates#cart'
     end
   end
 
+  post 'webhook', to: 'webhooks#receive'
+  resources :webhooks, only: [:create]
   resources :checkouts, only: [:new, :create]
 end
