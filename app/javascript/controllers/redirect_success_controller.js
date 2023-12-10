@@ -9,7 +9,7 @@ export default class extends Controller {
   }
 
   startCountdown() {
-    let countdown = 6
+    let countdown = 10
 
     const interval = setInterval(() => {
       countdown--

@@ -1,4 +1,4 @@
-  <div class="position-absolute bottom-0 end-0 me-2 mb-3" data-controller="alert" data-alert-target="alert">
+  <div class="position-absolute bottom-0 end-0 me-2 mb-3" data-controller="alert" data-alert-target="alert" style="z-index:100;">
     <% flash.each do |type, msg| %>
       <div class="d-flex justify-content-between alert alert-dismissibl <%= type == 'notice' ? 'alert-success' : type == 'alert' ? 'alert-danger' : '' %>" role="alert">
         <strong><%= msg %>!</strong>

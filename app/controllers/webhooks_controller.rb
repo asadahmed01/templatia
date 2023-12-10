@@ -26,8 +26,7 @@ class WebhooksController < ApplicationController
   
       # Handle the event type
 
-      case event.type
-      when 'checkout.session.completed'
+      if event.type == 'checkout.session.completed'
         stripe_session = event.data.object
         user_info = stripe_session['customer_details']
         # Create a hash to store user information

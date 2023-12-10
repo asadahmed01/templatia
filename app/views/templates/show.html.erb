@@ -47,10 +47,10 @@
     </div>
 
     <!-- Sidebar Area -->
-    <div class="col-lg-4 ps-5 align-self-center">
+    <div class="col-lg-4 ps-md-5 align-self-center">
       <!-- Pricing and Add to Basket Button -->
       <div>
-        <p class="h3"><%= number_to_currency(@template.price, unit: "CA$") %></p>
+        <p class="h3 mt-md-0 mt-3"><%= number_to_currency(@template.price, unit: "CA$") %></p>
         <p><%= @template.description %></p>
         <%= link_to 'Add to Cart', add_to_cart_template_path(@template), class: "btn btn-dark w-lg-100 w-100 rounded py-2", data: {turbo_method: :post} %>
       </div>
