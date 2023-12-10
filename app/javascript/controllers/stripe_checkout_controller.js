@@ -5,7 +5,10 @@ import { post } from "@rails/request.js"
 export default class extends Controller {
 
   static values = {publishableKey: String, url: String}
+
   async connect() {
+    const spinner = document.getElementById('checkout-spinner')
+    this.showSpinner(spinner)
     const stripe = Stripe(this.publishableKeyValue)
     
     const response = await post(this.urlValue)
@@ -16,5 +19,15 @@ export default class extends Controller {
   
     // Mount Checkout
     checkout.mount(this.element)
+    this.hideSpinner(spinner)
+  }
+
+  showSpinner(spinner) {
+    spinner.classList.remove('d-none')
+  }
+
+  // Define a method to hide the spinner
+  hideSpinner(spinner) {
+    spinner.classList.add('d-none')
   }
 }

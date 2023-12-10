@@ -38,8 +38,6 @@ class WebhooksController < ApplicationController
         user_hash[:template_id] = product_id
         TemplateMailer.with(user_hash: user_hash).template_sent.deliver_now
 
-        puts "Product ID: #{product_id}"
-        puts "Email-------->: #{user_hash[:email]}"
       else
         puts "Unhandled event type: #{event.type}"
       end

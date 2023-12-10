@@ -6,26 +6,30 @@ class CheckoutsController < ApplicationController
     end
   
     def create
-        stripe_session = Stripe::Checkout::Session.create(
-            ui_mode: 'embedded',
-            line_items: [{
-              price_data: {
-                unit_amount: (@template.price * 100).to_i,
-                currency: 'cad',
-                product_data: {
-                    name: @template.name,
-                    images: [url_for(@template.thumbnails.first)]
-                },
+      stripe_session = Stripe::Checkout::Session.create(
+          ui_mode: 'embedded',
+          line_items: [{
+            price_data: {
+              unit_amount: (@template.price * 100).to_i,
+              currency: 'cad',
+              product_data: {
+                  name: @template.name,
+                  images: [url_for(@template.thumbnails.first)]
               },
-              quantity: 1
-            }],
-            mode: 'payment',
-            metadata: {
-              product_id: @template.id,
             },
-            return_url: templates_url,
-        )
+            quantity: 1
+          }],
+          mode: 'payment',
+          metadata: {
+            product_id: @template.id,
+          },
+          return_url: success_checkouts_url,
+      )
       render json: { clientSecret: stripe_session.client_secret}
+    end
+
+    def success
+
     end
   
     private

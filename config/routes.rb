@@ -21,6 +21,11 @@ Rails.application.routes.draw do
   end
 
   post 'webhook', to: 'webhooks#receive'
+
   resources :webhooks, only: [:create]
-  resources :checkouts, only: [:new, :create]
+  resources :checkouts, only: [:new, :create] do
+    collection do
+      get :success
+    end
+  end
 end

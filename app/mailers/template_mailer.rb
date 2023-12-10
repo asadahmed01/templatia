@@ -9,6 +9,6 @@ class TemplateMailer < ApplicationMailer
     @user = params[:user_hash]
     template_id = @user[:template_id].to_i
     @template = Template.find(template_id)
-    mail(to: @user_hash[:email], subject: 'Your resume template is ready')
+    mail(to: @user[:email], subject: 'Your resume template is ready')
   end
 end
