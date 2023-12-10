@@ -52,7 +52,7 @@
       <div>
         <p class="h3"><%= number_to_currency(@template.price, unit: "CA$") %></p>
         <p><%= @template.description %></p>
-        <%= link_to 'Add to Cart', add_to_cart_template_path(@template), class: "btn btn-dark w-lg-100 w-100 rounded-pill py-2", data: {turbo_method: :post} %>
+        <%= link_to 'Add to Cart', add_to_cart_template_path(@template), class: "btn btn-dark w-lg-100 w-100 rounded py-2", data: {turbo_method: :post} %>
       </div>
       <!-- Item Details, if you have more information to show -->
       <div class="mt-4" style="max-height:50px;">

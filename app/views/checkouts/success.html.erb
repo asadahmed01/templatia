@@ -13,8 +13,12 @@
                 <h1>Thank You !</h1>
                 <p class="text-muted">We'll also email you a downloadable copy of the files. </p>
             </div>
-            <%= link_to 'Go back to main page', templates_path, class:"btn btn-success" %>
+            <%= link_to 'Go back to main page', templates_path, class:"btn btn-dark mb-2" %>
         </div>
-     <div class="border border-2 border-success"></div>
+        <div>
+            <p data-controller="redirect-success" data-redirect-success-target="countdown"
+            data-redirect-success-redirect-url-value="<%= templates_path %>" class="text-center mt-3 text-success"></p>
+        </div>
+        <div class="border border-2 border-success"></div>
     </div>
 </div>

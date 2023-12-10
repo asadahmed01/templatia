@@ -29,7 +29,7 @@ class CheckoutsController < ApplicationController
     end
 
     def success
-
+      session[:cart].clear
     end
   
     private
